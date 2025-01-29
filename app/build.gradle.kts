@@ -41,24 +41,26 @@ android {
     }
     // If needed, specify the Compose compiler version from your catalog:
     // composeOptions {
-    //     kotlinCompilerExtensionVersion = "1.5.3" // for example
+    //     kotlinCompilerExtensionVersion = "1.5.3" // or your version
     // }
 }
 
 dependencies {
-    // Core / Lifecycle / Compose basics
+    // --- Compose / Core / Lifecycle ---
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
-
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(libs.androidx.appcompat) // If using AppCompat components
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation("androidx.compose.runtime:runtime-livedata")    // --- Accompanist Permissions (for camera/mic) ---
+    implementation(libs.accompanist.permissions)
 
-    // Testing
+    // --- Testing ---
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -67,9 +69,8 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    // WebRTC
-    implementation("io.getstream:stream-webrtc-android:1.3.7")
+    // --- Jitsi Meet SDK ---
+    // Using an example version (6.2.0). You can adjust to a stable or latest version as needed.
+    implementation("org.jitsi.react:jitsi-meet-sdk:6.2.0")
 
-    // Accompanist Permissions (for camera/mic, etc.)
-    implementation(libs.accompanist.permissions)
 }

@@ -1,19 +1,18 @@
-package com.example.videocall
+package com.shivangi.videocallingapp
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 
 class VideoCallViewModel : ViewModel() {
 
-    // Holds the current room name. If null => not in a call.
-    var roomName = mutableStateOf<String?>(null)
-        private set
+    // If null => not in call, else we store the room name
+    val currentRoomName = mutableStateOf<String?>(null)
 
     fun joinCall(room: String) {
-        roomName.value = room
+        currentRoomName.value = room
     }
 
     fun leaveCall() {
-        roomName.value = null
+        currentRoomName.value = null
     }
 }
